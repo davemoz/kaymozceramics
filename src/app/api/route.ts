@@ -7,6 +7,5 @@ client.setConfig({
 
 export async function GET() {
   const response = await client.lists.getAllLists();
-  console.log(`************* Response: ${response}`);
-  return new Response(response);
+  return new Response(JSON.stringify(response));
 }
