@@ -12,34 +12,11 @@ type ListT = {
 };
 
 export default function EmailSignup() {
-  const [lists, setLists] = useState([]);
-  const handleClick = async () => {
-    if (window !== null) {
-      const endpoint = new URL("api", window.location.href);
-      const response = await fetch(endpoint, {
-        method: "GET",
-      });
-      if (response.ok) {
-        const res: any = response.json();
-        setLists(res.lists);
-      }
-    }
-  };
   return (
     <section className={styles.section}>
       <h3 className={styles.title}>
         Subscribe to receive the latest KMC news!
       </h3>
-      <button onClick={handleClick}>Get lists</button>
-      {lists && (
-        <ul>
-          {lists.map((list: ListT) => (
-            <li>
-              {list.name}: {list.id}
-            </li>
-          ))}
-        </ul>
-      )}
       <Form.Root action={subscribe}>
         <Form.Field name="email">
           <Form.Control asChild>
@@ -57,6 +34,7 @@ export default function EmailSignup() {
             Please provide a valid email address.
           </Form.Message>
         </Form.Field>
+        <input type="hidden" name="tags" value={["website", "homepage"]} />
         <Form.Submit asChild>
           <button className={styles.submit}>Sign me up!</button>
         </Form.Submit>

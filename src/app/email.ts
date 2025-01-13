@@ -7,18 +7,17 @@ client.setConfig({
   server: "us20",
 });
 
-const WELCOME_LIST_ID = "203531";
+const KMC_LIST_ID = "1edfa092fc";
 
 export async function subscribe(formData: FormData) {
   const payload = {
     email: formData.get("email"),
     tags: formData.get("tags"),
   };
-  const response = await client.lists.addListMember(WELCOME_LIST_ID, {
+  const response = await client.lists.addListMember(KMC_LIST_ID, {
     email_address: payload.email,
     status: "pending",
     tags: payload.tags,
   });
-  if (response.ok) {
-  }
+  return response;
 }
