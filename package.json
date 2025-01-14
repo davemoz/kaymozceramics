@@ -5,12 +5,11 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@radix-ui/react-form": "^0.1.1",
     "eslint": "^9.18.0",
     "next": "latest",
