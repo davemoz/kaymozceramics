@@ -20,7 +20,7 @@ export default function useSubscribeEmail() {
             tags: payload.tags.split(","),
           }),
           headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY}`,
+            Authorization: `Bearer ${process.env.MAILCHIMP_API_KEY}`,
             "Content-Type": "application/json",
           },
         }
