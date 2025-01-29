@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  &::after {
+    content: "|";
+    display: block;
+    padding: 0 20px;
+  }
+
+  &:last-of-type {
+    display: block;
+
+    &::after {
+      content: "";
+      display: none;
+    }
+  }
+}

@@ -1,5 +1,8 @@
+import AboutHero from "./components/AboutHero/AboutHero";
 import EmailSignup from "./components/EmailSignup/EmailSignup";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import HopeHero from "./components/HopeHero/HopeHero";
 import styles from "./homepage.module.scss";
 
 export default function Homepage() {
@@ -23,11 +26,11 @@ export default function Homepage() {
         </video>
         <Header />
       </section>
-      <EmailSignup />
-      {/* <HopeHero />
+      {/* <EmailSignup /> */}
+      <HopeHero />
       <AboutHero />
-      <InstagramFeed />
-      <Footer /> */}
+      {/* <InstagramFeed /> */}
+      <Footer />
     </>
   );
 }

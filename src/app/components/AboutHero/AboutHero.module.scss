@@ -1,0 +1,17 @@
+@use "/src/styles/mixins/content-width.module" as *;
+
+.section {
+  background-image: url("/media/Kaymoz_headshots-1.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  height: 400px;
+}
+
+.content {
+  @include content-width();
+
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
