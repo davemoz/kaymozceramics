@@ -5,8 +5,8 @@ import { ChangeEvent, useRef, useState } from "react";
 import useSubscribeEmail from "@/utils/useSubscribeEmail";
 
 export default function EmailSignup() {
-  const formRef = useRef(null);
-  const emailRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const { doFetch, isLoading, response } = useSubscribeEmail();
@@ -35,9 +35,6 @@ export default function EmailSignup() {
       if (response) {
         console.log(response);
         setMessage("Thanks for signing up! We'll be in touch.");
-      } else {
-        console.log(response?.body.detail);
-        setMessage(response?.body.detail);
       }
     }
   };
@@ -54,7 +51,9 @@ export default function EmailSignup() {
           placeholder="Your Email Address"
           type="email"
           value={email}
-          onChange={(e: ChangeEvent) => setEmail(e.currentTarget.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.currentTarget.value)
+          }
           ref={emailRef}
           required
         />
