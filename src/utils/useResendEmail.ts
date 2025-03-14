@@ -1,36 +1,32 @@
 import { useState } from "react";
-import { Resend } from "resend";
-
-const GENERAL_AUDIENCE_ID = "37f5708f-0596-4315-87b0-69d716bfebb3";
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export default function useResendEmail() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [response, setResponse] = useState<string>();
+  const [responseMessage, setResponseMessage] = useState<string>("");
 
-  const createContact = async (payload) => {
+  const createContact = async (payload): Promise<void> => {
     setIsLoading(true);
     try {
-      const response = await resend.contacts.create({
-        email: payload.email,
-        // firstName: "Steve",
-        // lastName: "Wozniak",
-        unsubscribed: false,
-        audienceId: GENERAL_AUDIENCE_ID,
+      const response = await fetch("/api/email/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          email: payload.email,
+        }),
       });
-      console.log(JSON.stringify(response));
-      if (response.error) {
-        console.error(`There was an error: ${response.error}`);
-        setResponse(`There was an error: ${response.error}`);
-      } else if (response.data) {
-        setResponse("Success! Thanks for signing up!");
+      const jsonRes = await response.json();
+      console.log(JSON.stringify(jsonRes));
+      if (jsonRes.error) {
+        console.error(`There was an error: ${jsonRes.error}`);
+        setResponseMessage(`There was an error: ${jsonRes.error}`);
+      } else if (jsonRes.data) {
+        setResponseMessage("Success! Thanks for signing up!");
       }
     } catch (error) {
-      setResponse(`There was an error: ${error}`);
+      setResponseMessage(`There was an error: ${error}`);
     } finally {
       setIsLoading(false);
     }
   };
 
-  return { createContact, isLoading, response };
+  return { createContact, isLoading, responseMessage };
 }

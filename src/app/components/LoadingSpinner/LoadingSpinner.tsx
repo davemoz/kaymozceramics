@@ -22,16 +22,18 @@ export default function LoadingSpinner() {
         <stop offset="1" stopColor="currentColor" stopOpacity="0"></stop>
       </radialGradient>
       <circle
-        transform-origin="center"
         fill="none"
         stroke="url(#a12)"
-        stroke-width="15"
-        stroke-linecap="round"
-        stroke-dasharray="200 1000"
-        stroke-dashoffset="0"
         cx="100"
         cy="100"
         r="70"
+        style={{
+          transformOrigin: "center",
+          strokeWidth: "15",
+          strokeLinecap: "round",
+          strokeDasharray: "200 1000",
+          strokeDashoffset: "0",
+        }}
       >
         <animateTransform
           type="rotate"
@@ -45,15 +47,17 @@ export default function LoadingSpinner() {
         ></animateTransform>
       </circle>
       <circle
-        transform-origin="center"
         fill="none"
         opacity=".2"
         stroke="currentColor"
-        stroke-width="15"
-        stroke-linecap="round"
         cx="100"
         cy="100"
         r="70"
+        style={{
+          transformOrigin: "center",
+          strokeWidth: "15",
+          strokeLinecap: "round",
+        }}
       ></circle>
     </svg>
   );

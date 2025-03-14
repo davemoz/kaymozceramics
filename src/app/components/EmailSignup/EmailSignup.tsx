@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./EmailSignup.module.scss";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import useResendEmail from "@/utils/useResendEmail";
 
@@ -9,9 +9,9 @@ export default function EmailSignup() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const { createContact, isLoading, response } = useResendEmail();
+  const { createContact, isLoading, responseMessage } = useResendEmail();
 
-  const handleClick = async (event) => {
+  const handleClick = async () => {
     if (email === "") {
       setMessage("An email address is required to signup.");
       return;
@@ -26,14 +26,17 @@ export default function EmailSignup() {
         emailRef.current.setCustomValidity("");
       }
     }
-    createContact({
+    await createContact({
       email,
       // tags: data.tags,
     });
-    if (response) {
-      setMessage(response);
-    }
   };
+
+  useEffect(() => {
+    if (responseMessage) {
+      setMessage(responseMessage);
+    }
+  }, [responseMessage]);
 
   return (
     <section className={styles.section}>
@@ -57,8 +60,8 @@ export default function EmailSignup() {
         <button className={styles.button} onClick={handleClick}>
           {isLoading ? <LoadingSpinner /> : "Sign me up!"}
         </button>
-        {message && <p className={styles.message}>{message}</p>}
       </div>
+      {message && <p className={styles.message}>{message}</p>}
     </section>
   );
 }
