@@ -2,16 +2,16 @@
 
 import styles from "./EmailSignup.module.scss";
 import { ChangeEvent, useRef, useState } from "react";
-import useSubscribeEmail from "@/utils/useSubscribeEmail";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import useResendEmail from "@/utils/useResendEmail";
 
 export default function EmailSignup() {
-  const formRef = useRef<HTMLFormElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const { doFetch, isLoading, response } = useSubscribeEmail();
+  const { createContact, isLoading, response } = useResendEmail();
 
-  const handleSubmit = async (event) => {
+  const handleClick = async (event) => {
     if (email === "") {
       setMessage("An email address is required to signup.");
       return;
@@ -26,16 +26,12 @@ export default function EmailSignup() {
         emailRef.current.setCustomValidity("");
       }
     }
-    if (formRef.current) {
-      const data = Object.fromEntries(new FormData(event.target));
-      doFetch({
-        email: data.email,
-        tags: data.tags,
-      });
-      if (response) {
-        console.log(response);
-        setMessage("Thanks for signing up! We'll be in touch.");
-      }
+    createContact({
+      email,
+      // tags: data.tags,
+    });
+    if (response) {
+      setMessage(response);
     }
   };
 
@@ -44,7 +40,7 @@ export default function EmailSignup() {
       <h3 className={styles.title}>
         Subscribe to receive the latest KMC news!
       </h3>
-      <form onSubmit={handleSubmit} ref={formRef}>
+      <div className={styles.form}>
         <input
           className={styles.input}
           name="email"
@@ -58,11 +54,11 @@ export default function EmailSignup() {
           required
         />
         <input type="hidden" name="tags" value={["website", "homepage"]} />
-        {message && <p className={styles.message}>{message}</p>}
-        <button className={styles.submit} type="submit">
-          Sign me up!
+        <button className={styles.button} onClick={handleClick}>
+          {isLoading ? <LoadingSpinner /> : "Sign me up!"}
         </button>
-      </form>
+        {message && <p className={styles.message}>{message}</p>}
+      </div>
     </section>
   );
 }

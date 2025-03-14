@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className={styles.header}>
-      <Link href={"/"}>
+      <Link href="/">
         <KMCLogo className={styles.logo} />
       </Link>
       <Nav />

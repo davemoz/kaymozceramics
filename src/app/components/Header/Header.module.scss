@@ -1,9 +1,12 @@
+@use "/src/styles/mixins/content-width.module" as *;
+
 .header {
+  @include content-width();
+
   align-items: center;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 1440px;
 }
 
 .logo {

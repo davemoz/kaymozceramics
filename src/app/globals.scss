@@ -1,5 +1,53 @@
 @layer reset, theme, utilities;
 
 :root {
-  --text-color: #000;
+  --text-color: #343533;
+  --primary-color: hsl(177, 33%, 48%);
+  --primary-color-hover: hsl(177, 33%, 42%);
+  --primary-color-lite: hsl(177, 33%, 78%);
+  --secondary-color: hsl(16, 45%, 75%);
+  --secondary-color-hover: hsl(16, 45%, 69%);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+a {
+  background-color: transparent;
+  border-bottom: 3px solid var(--secondary-color);
+  box-shadow: inset 0 -0.01em 0 var(--secondary-color);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+
+  &:hover {
+    background-color: transparent;
+    box-shadow: inset 0 -0.85em 0 var(--secondary-color);
+    color: var(--text-color);
+  }
+
+  &:has(::not(button, div, svg)) {
+    background-color: none;
+    border: none;
+    box-shadow: none;
+    transition: none;
+
+    &:hover {
+      background-color: none;
+      box-shadow: none;
+    }
+  }
 }

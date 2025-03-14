@@ -26,7 +26,7 @@ export default function Homepage() {
         </video>
         <Header />
       </section>
-      {/* <EmailSignup /> */}
+      <EmailSignup />
       <HopeHero />
       <AboutHero />
       {/* <InstagramFeed /> */}

@@ -7,7 +7,7 @@ export default function AboutHero() {
     <section className={styles.section}>
       <div className={styles.content}>
         <Link href="/about">
-          <button>Learn more about Kay</button>
+          <button className={styles.button}>Learn more about Kay</button>
         </Link>
       </div>
     </section>

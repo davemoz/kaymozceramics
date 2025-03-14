@@ -14,7 +14,8 @@
     "eslint": "^9.18.0",
     "next": "latest",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "resend": "^4.1.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
