@@ -1,8 +1,10 @@
-import AboutHero from "./components/AboutHero/AboutHero";
-import EmailSignup from "./components/EmailSignup/EmailSignup";
-import HopeHero from "./components/HopeHero/HopeHero";
-import InstagramFeed from "./components/InstagramFeed/InstagramFeed";
-import styles from "./homepage.module.scss";
+import AboutHero from "../components/AboutHero/AboutHero";
+import EmailSignup from "../components/EmailSignup/EmailSignup";
+import Header from "../components/Header/Header";
+import HopeHero from "../components/HopeHero/HopeHero";
+import InstagramFeed from "../components/InstagramFeed/InstagramFeed";
+
+import styles from "../homepage.module.scss";
 
 export default function Homepage() {
   return (

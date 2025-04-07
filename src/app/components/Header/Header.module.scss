@@ -16,10 +16,12 @@
 
 .white {
   @extend %logo;
-  fill: white;
+
+  color: white;
 }
 
 .black {
   @extend %logo;
-  fill: black;
+
+  color: black;
 }

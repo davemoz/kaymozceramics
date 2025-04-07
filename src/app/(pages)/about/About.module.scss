@@ -1,4 +1,4 @@
-@import "../../styles/mixins/content-width.module.scss";
+@import "../../../styles/mixins/content-width.module.scss";
 
 .section {
   @include content-width();

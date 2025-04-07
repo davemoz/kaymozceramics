@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
-import "./globals.scss";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import "../globals.scss";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Kay Moz Ceramics",
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={montserrat.className}>
       <body>
-        <Header isHomepage={true} />
+        <Header isHomepage={false} />
         {children}
         <Footer />
       </body>

@@ -1,4 +1,4 @@
-import EmailSignup from "../components/EmailSignup/EmailSignup";
+import EmailSignup from "../../components/EmailSignup/EmailSignup";
 import styles from "./shop.module.scss";
 
 export default function ShopPage() {
