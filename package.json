@@ -5,12 +5,13 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "NODE_OPTIONS='--inspect' email next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "@radix-ui/react-form": "^0.1.1",
+    "@react-email/components": "0.0.36",
     "classnames": "^2.5.1",
     "eslint": "^9.18.0",
     "next": "latest",
@@ -24,6 +25,7 @@
     "@types/react": "^19.0.5",
     "@types/react-dom": "^19.0.3",
     "eslint-config-next": "^15.1.4",
+    "react-email": "4.0.4",
     "sass": "^1.83.1",
     "typescript": "^5.7.3"
   },
