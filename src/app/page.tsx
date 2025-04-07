@@ -3,6 +3,7 @@ import EmailSignup from "./components/EmailSignup/EmailSignup";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import HopeHero from "./components/HopeHero/HopeHero";
+import InstagramFeed from "./components/InstagramFeed/InstagramFeed";
 import styles from "./homepage.module.scss";
 
 export default function Homepage() {
@@ -29,7 +30,7 @@ export default function Homepage() {
       <EmailSignup />
       <HopeHero />
       <AboutHero />
-      {/* <InstagramFeed /> */}
+      <InstagramFeed />
       <Footer />
     </>
   );
