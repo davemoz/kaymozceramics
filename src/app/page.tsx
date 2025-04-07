@@ -1,7 +1,5 @@
 import AboutHero from "./components/AboutHero/AboutHero";
 import EmailSignup from "./components/EmailSignup/EmailSignup";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
 import HopeHero from "./components/HopeHero/HopeHero";
 import InstagramFeed from "./components/InstagramFeed/InstagramFeed";
 import styles from "./homepage.module.scss";
@@ -25,13 +23,11 @@ export default function Homepage() {
           <source src="/media/KMC-homepage-vid-05.mp4" type="video/mp4" />
           <p>Your browser doesn't support HTML video.</p>
         </video>
-        <Header />
       </section>
       <EmailSignup />
       <HopeHero />
       <AboutHero />
       <InstagramFeed />
-      <Footer />
     </>
   );
 }
