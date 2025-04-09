@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import useResendEmail from "@/utils/useResendEmail";
-import styles from "./ContactForm.module.scss";
 import Link from "next/link";
+
+import useResendEmail from "@/utils/useResendEmail";
 import TurnstileComponent from "../Turnstile/TurnstileComponent";
+
+import styles from "./ContactForm.module.scss";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

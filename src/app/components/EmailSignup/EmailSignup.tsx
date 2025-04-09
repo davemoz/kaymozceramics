@@ -11,21 +11,33 @@ export default function EmailSignup() {
   const [message, setMessage] = useState<string>("");
   const { createContact, isLoading, responseMessage } = useResendEmail();
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.currentTarget.value);
+
+    if (message) {
+      setMessage("");
+    }
+  };
+
+  const validateEmail = (email: string) => {
+    const errors: Record<string, string> = {};
+
+    if (!email.trim()) {
+      errors.email = "Email is required";
+      setMessage("Email is required");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Please enter a valid email address";
+      setMessage("Please enter a valid email address");
+    }
+
+    return Object.keys(errors).length === 0;
+  };
+
   const handleClick = async () => {
-    if (email === "") {
-      setMessage("An email address is required to signup.");
+    if (!validateEmail(email)) {
       return;
     }
-    if (emailRef.current) {
-      if (emailRef.current.validity.typeMismatch) {
-        emailRef.current.setCustomValidity(
-          "Please provide a valid email address."
-        );
-        setMessage("Please provide a valid email address.");
-      } else {
-        emailRef.current.setCustomValidity("");
-      }
-    }
+
     await createContact({
       email,
       // tags: data.tags,
@@ -50,9 +62,7 @@ export default function EmailSignup() {
           placeholder="Your Email Address"
           type="email"
           value={email}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.currentTarget.value)
-          }
+          onChange={handleChange}
           ref={emailRef}
           required
         />
