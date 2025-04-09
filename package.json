@@ -14,10 +14,11 @@
     "classnames": "^2.5.1",
     "eslint": "^9.18.0",
     "next": "latest",
+    "next-turnstile": "^1.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-turnstile": "^1.1.4",
-    "resend": "^4.1.2"
+    "resend": "^4.1.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

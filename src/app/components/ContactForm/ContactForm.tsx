@@ -243,9 +243,6 @@ export default function ContactForm() {
               onExpire={() => {
                 setTurnstileStatus("expired");
               }}
-              onTimeout={() => {
-                setTurnstileStatus("required");
-              }}
             />
           </div>
 
