@@ -4,6 +4,7 @@ import { useState } from "react";
 import useResendEmail from "@/utils/useResendEmail";
 import styles from "./ContactForm.module.scss";
 import Link from "next/link";
+import TurnstileComponent from "../Turnstile/TurnstileComponent";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -12,11 +13,15 @@ export default function ContactForm() {
     message: "",
     newsletter: false,
     termsAccepted: false,
+    turnstileToken: "",
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [turnstileStatus, setTurnstileStatus] = useState<
+    "success" | "error" | "expired" | "required"
+  >("required");
 
   const { createContact, isLoading, responseMessage } = useResendEmail();
 
@@ -68,6 +73,10 @@ export default function ContactForm() {
       errors.termsAccepted = "You must accept the terms and privacy policy";
     }
 
+    if (turnstileStatus !== "success") {
+      errors.turnstileToken = "Please verify that you are human";
+    }
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -83,9 +92,14 @@ export default function ContactForm() {
     setSubmitError(null);
 
     try {
-      // Here you would typically send the form data to your backend
-      // For now, we'll just simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/email/send", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
 
       // If user opted in for newsletter, add them using the createContact function
       if (formData.newsletter) {
@@ -99,6 +113,7 @@ export default function ContactForm() {
         message: "",
         newsletter: false,
         termsAccepted: false,
+        turnstileToken: "",
       });
     } catch (error) {
       setSubmitError(
@@ -122,12 +137,6 @@ export default function ContactForm() {
           {formData.newsletter && (
             <p className={styles.newsletterMessage}>{responseMessage}</p>
           )}
-          <button
-            className={styles.resetButton}
-            onClick={() => setSubmitSuccess(false)}
-          >
-            Send another message
-          </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -217,6 +226,27 @@ export default function ContactForm() {
                 {formErrors.termsAccepted}
               </span>
             )}
+          </div>
+
+          <div className={styles.turnstile}>
+            <TurnstileComponent
+              onError={() => {
+                setTurnstileStatus("error");
+              }}
+              onVerify={(token) => {
+                setTurnstileStatus("success");
+                setFormData({
+                  ...formData,
+                  turnstileToken: token,
+                });
+              }}
+              onExpire={() => {
+                setTurnstileStatus("expired");
+              }}
+              onTimeout={() => {
+                setTurnstileStatus("required");
+              }}
+            />
           </div>
 
           {submitError && (

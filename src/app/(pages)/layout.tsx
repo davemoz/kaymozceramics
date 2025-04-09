@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
-import "../globals.scss";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+
+import "../globals.scss";
 
 export const metadata: Metadata = {
   title: "Kay Moz Ceramics",

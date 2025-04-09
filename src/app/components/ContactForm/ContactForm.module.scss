@@ -77,6 +77,11 @@
   border-radius: 4px;
 }
 
+.turnstile {
+  display: flex;
+  justify-content: center;
+}
+
 .submitButton {
   @extend %button;
   @extend %primary;

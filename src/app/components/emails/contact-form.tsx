@@ -14,8 +14,7 @@ export const ContactFormSubmissionEmail: React.FC<
     <Html>
       <Head />
       <Body>
-        <h1>New message!</h1>
-        <p>You've received a new message from the website contact form:</p>
+        <h2>You've received a new message from the website contact form:</h2>
         <p>
           <strong>Name:</strong> {fullName}
         </p>
