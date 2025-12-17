@@ -11,7 +11,7 @@ export default function DataDeletionPage() {
       </p>
       <h3>Questions?</h3>
       <p>
-        If you have any questions about this Privacy Policy, please feel free to{" "}
+        If you have any questions, please feel free to{" "}
         <Link href="/contact">contact us.</Link>
       </p>
     </section>
