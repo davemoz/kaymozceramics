@@ -12,20 +12,23 @@ export default async function InstagramFeed() {
   async function getInstagramPosts() {
     try {
       // Replace with your Instagram access token and user ID
-      const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+      const appId = process.env.FACEBOOK_APP_ID;
+      const appSecret = process.env.FACEBOOK_APP_SECRET;
       const userId = process.env.INSTAGRAM_USER_ID;
 
-      if (!accessToken || !userId) {
+      if (!appId || !appSecret || !userId) {
         throw new Error("Instagram credentials not configured");
       }
 
       const response = await fetch(
-        `https://graph.instagram.com/me/media?fields=id,media_url,permalink,thumbnail_url&access_token=${accessToken}&limit=8`,
+        `https://graph.instagram.com/me/media?fields=id,media_url,permalink,thumbnail_url&access_token=${appId}|${appSecret}&limit=8`,
         { cache: "no-store" }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to fetch Instagram posts");
+        console.log(response);
+        return [];
+        // throw new Error("Failed to fetch Instagram posts");
       }
 
       const data = await response.json();

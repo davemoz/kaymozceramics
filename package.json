@@ -10,28 +10,28 @@
     "start": "next start"
   },
   "dependencies": {
-    "@react-email/components": "0.0.36",
+    "@react-email/components": "1.0.1",
     "classnames": "^2.5.1",
-    "eslint": "^9.18.0",
+    "eslint": "^9.39.2",
     "next": "latest",
-    "next-turnstile": "^1.0.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "resend": "^4.1.2",
-    "uuid": "^11.1.0"
+    "next-turnstile": "^1.0.7",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "resend": "^6.6.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^22.10.5",
-    "@types/react": "^19.0.5",
-    "@types/react-dom": "^19.0.3",
-    "eslint-config-next": "^15.1.4",
-    "react-email": "^4.0.7",
-    "sass": "^1.83.1",
-    "typescript": "^5.7.3"
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint-config-next": "^16.0.10",
+    "react-email": "^5.0.8",
+    "sass": "^1.97.0",
+    "typescript": "^5.9.3"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b"
+  "packageManager": "pnpm@10.26.0"
 }
