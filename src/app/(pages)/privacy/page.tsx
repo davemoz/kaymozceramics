@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+import styles from "./Privacy.module.scss";
+
 export default function PrivacyPage() {
   return (
-    <section>
+    <section className={styles.section}>
       <h1>Privacy Policy</h1>
       <p>Last updated: 04/07/2025</p>
       <h2>Who we are</h2>

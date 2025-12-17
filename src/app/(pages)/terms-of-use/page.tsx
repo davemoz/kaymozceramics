@@ -1,6 +1,8 @@
+import styles from "./TermsOfUse.module.scss";
+
 export default function TermsOfUsePage() {
   return (
-    <section>
+    <section className={styles.section}>
       <h1>Terms of Use</h1>
       <p>Last updated: 04/07/2025</p>
 

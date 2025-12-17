@@ -1,0 +1,10 @@
+@use "../../../styles/mixins/content-width.module.scss" as *;
+
+.section {
+  @include content-width();
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

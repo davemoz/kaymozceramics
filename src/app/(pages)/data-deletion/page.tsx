@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+import styles from "./DataDeletion.module.scss";
+
 export default function DataDeletionPage() {
   return (
-    <section>
+    <section className={styles.section}>
       <h1>Data Deletion</h1>
       <p>Last updated: 12/17/2025</p>
       <h2>Data retention</h2>
