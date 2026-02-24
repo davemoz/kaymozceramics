@@ -10,7 +10,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@react-email/components": "1.0.1",
+    "@react-email/components": "1.0.8",
+    "@vercel/analytics": "^1.6.1",
     "classnames": "^2.5.1",
     "eslint": "^9.39.2",
     "next": "latest",
