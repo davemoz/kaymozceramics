@@ -9,47 +9,6 @@ interface InstagramPost {
 }
 
 export default async function InstagramFeed() {
-  async function getInstagramPosts() {
-    try {
-      // Replace with your Instagram access token and user ID
-      const appId = process.env.FACEBOOK_APP_ID;
-      const appSecret = process.env.FACEBOOK_APP_SECRET;
-      const userId = process.env.INSTAGRAM_USER_ID;
-
-      if (!appId || !appSecret || !userId) {
-        throw new Error("Instagram credentials not configured");
-      }
-
-      const response = await fetch(
-        `https://graph.instagram.com/me/media?fields=id,media_url,permalink,thumbnail_url&access_token=${appId}|${appSecret}&limit=8`,
-        { cache: "no-store" }
-      );
-
-      if (!response.ok) {
-        console.log(response);
-        return [];
-        // throw new Error("Failed to fetch Instagram posts");
-      }
-
-      const data = await response.json();
-      return data.data;
-    } catch (err) {
-      console.error("Error fetching Instagram posts:", err);
-      return [];
-    }
-  }
-
-  const posts = await getInstagramPosts();
-
-  if (posts.length === 0) {
-    return (
-      <section className={styles.container}>
-        <h2 className={styles.title}>@kaymoz_ceramics</h2>
-        <p>Unable to load Instagram feed at this time.</p>
-      </section>
-    );
-  }
-
   return (
     <section className={styles.container}>
       <Link
@@ -57,25 +16,11 @@ export default async function InstagramFeed() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <h2 className={styles.title}>@kaymoz_ceramics</h2>
+        <button className={styles.link}>
+          <h2 className={styles.title}>@kaymoz_ceramics</h2>
+          <p className={styles.subtitle}>on Instagram</p>
+        </button>
       </Link>
-      <div className={styles.grid}>
-        {posts.map((post) => (
-          <a
-            key={post.id}
-            href={post.permalink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.item}
-          >
-            <img
-              src={post.thumbnail_url || post.media_url}
-              alt="Instagram post"
-              className={styles.image}
-            />
-          </a>
-        ))}
-      </div>
     </section>
   );
 }
