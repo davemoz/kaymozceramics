@@ -9,6 +9,25 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS",
   },
+  "routes": [
+    {
+      "pattern": "kaymozceramics.com",
+      "zone_name": "kaymozceramics.com",
+    },
+    {
+      "pattern": "kaymozceramics.com/*",
+      "zone_name": "kaymozceramics.com",
+    },
+    {
+      "pattern": "*.kaymozceramics.com/*",
+      "zone_name": "kaymozceramics.com",
+    },
+    {
+      "pattern": "kaymozceramics.com",
+      "zone_name": "kaymozceramics.com",
+      "custom_domain": true,
+    },
+  ],
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
