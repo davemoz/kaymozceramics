@@ -20,9 +20,18 @@ export default function Homepage() {
           playsInline={true}
           poster="/media/video-poster-05.jpg"
         >
-          <source src="/media/KMC-homepage-vid-05.webm" type="video/webm" />
-          <source src="/media/KMC-homepage-vid-05.ogg" type="video/ogg" />
-          <source src="/media/KMC-homepage-vid-05.mp4" type="video/mp4" />
+          <source
+            src="https://media.kaymozceramics.com/KMC-homepage-vid-05.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://media.kaymozceramics.com/KMC-homepage-vid-05.ogg"
+            type="video/ogg"
+          />
+          <source
+            src="https://media.kaymozceramics.com/KMC-homepage-vid-05.mp4"
+            type="video/mp4"
+          />
           <p>Your browser doesn't support HTML video.</p>
         </video>
       </section>

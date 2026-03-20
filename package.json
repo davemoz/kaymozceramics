@@ -5,13 +5,17 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start"
+    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
     "@react-email/components": "1.0.8",
-    "@vercel/analytics": "^1.6.1",
     "classnames": "^2.5.1",
     "eslint": "^9.39.2",
     "next": "latest",
@@ -22,6 +26,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@opennextjs/aws": "^3.9.16",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
@@ -29,10 +34,11 @@
     "eslint-config-next": "^16.0.10",
     "react-email": "^5.0.8",
     "sass": "^1.97.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.76.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.26.0"
+  "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531"
 }
